@@ -11,30 +11,31 @@ function JoinBlock({ onLogin }) {
     if (!roomId || !userName) {
       return alert('Error')
     }
+    const obj = {
+      roomId,
+      userName
+    }
     setLoading(true)
 
-    await axios.post('/rooms', {
-      roomId,
-      userName,
-    })
-    onLogin()
+    await axios.post('/rooms', obj)
+    onLogin(obj)
   }
 
   return (
     <div className="join-block">
       <input
         type="text"
-        placeholder="Room ID"
+        placeholder="Номер комнаты"
         value={roomId}
         onChange={(e) => setRoomId(e.target.value)}
       />
       <input
         type="text"
-        placeholder="Your name"
+        placeholder="Ваше имя"
         value={userName}
         onChange={(e) => setUserName(e.target.value)}
       />
-      <button disabled={isLoading} onClick={onEnter} className="btn btn-success">{isLoading ? 'Loading...' : 'Start'}</button>
+      <button disabled={isLoading} onClick={onEnter} className="btn btn-success">{isLoading ? 'Загрузка...' : 'Начать'}</button>
 
     </div>
   );
