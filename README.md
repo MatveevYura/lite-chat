@@ -8,9 +8,9 @@ technologies used:
 
 to start server 
 
-  npm run server
+ - npm run server
 
 to start app
 
-  npm start
+ - npm start
 
